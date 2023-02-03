@@ -7,9 +7,36 @@ import { books } from "./data";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import Cart from "./pages/Cart";
+import { useAuthState } from "react-firebase-hooks/auth";
+import {addDoc, collection} from 'firebase/firestore';
+import {db} from './Firebase/config'
+import { auth } from './Firebase/config';
 
 function App() {
   const [cart, setCart] = useState([]);
+  const booksRef = collection(db, "books")
+
+  const [user] = useAuthState(auth)
+
+  console.log(user?.uid)
+
+  const transfer = () => {
+      books.map(book => {
+       addDoc(booksRef, {
+        id: book.id,
+        title: book.title,
+        url: book.url,
+        originalPrice: book.originalPrice,
+        salePrice: book.salePrice,
+        rating: book.rating,
+        uid: user?.uid
+      })
+    })
+  }
+
+  //transfer()
+
+  
 
   function addToCart(book) {
     setCart([...cart, {...book, quantity: 1}])
@@ -41,7 +68,7 @@ function App() {
   }
 
   useEffect(() => {
-      console.log(cart);
+    console.log(cart);
   }, [cart])
 
   return (

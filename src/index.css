@@ -6,6 +6,24 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.google-auth{
+  border: solid #7342d6;
+  border-radius: 30px;
+  padding: 4px 8px;
+  background-color: #7342d6;
+  color: #fff;
+}
+
+.email__name{
+  color: #7342d6;
+}
+
+.welcome{
+  color: #7342d6;
+  font-weight: 200;
+  margin-right: 8px;
+}
+
 .App {
   display: flex;
   flex-direction: column;

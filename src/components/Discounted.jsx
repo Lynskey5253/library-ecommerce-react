@@ -12,7 +12,7 @@ const Discounted = () => {
                     </h2>
                     <div className="books">
                         {books
-                        .filter(book => book.saleprice > 0)
+                        .filter(book => book.salePrice > 0)
                         .slice(0, 8)
                         .map((book) => (
                             <Book book={book} key={book.id} />

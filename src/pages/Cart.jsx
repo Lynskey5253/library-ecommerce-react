@@ -12,6 +12,8 @@ const Cart = ({ cart, changeQuantity, removeItem }) => {
         return price;
     }
 
+    
+
   return (
     <div id="books__body">
       <main id="books__main">
