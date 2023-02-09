@@ -14,30 +14,42 @@ import { auth } from './Firebase/config';
 
 function App() {
   const [cart, setCart] = useState([]);
-  const booksRef = collection(db, "books")
+  //const cartRef = collection(db, "carts")
 
   const [user] = useAuthState(auth)
 
   console.log(user?.uid)
 
-  const transfer = () => {
-      books.map(book => {
-       addDoc(booksRef, {
-        id: book.id,
-        title: book.title,
-        url: book.url,
-        originalPrice: book.originalPrice,
-        salePrice: book.salePrice,
-        rating: book.rating,
-        uid: user?.uid
-      })
-    })
-  }
-
-  //transfer()
-
+  //function createCart() {
+  //  const userCart = {
+  //    uid: user?.uid,
+  //    books: [],
+  //  }
+  //  addDoc(collection(db, "carts"), userCart)
+  //}
+//
+  //async function getPostByUid() {
+  //  const postCollectionRef = await query(
+  //    collection(db, "post"),
+  //    where("uid", "==", user.id)
+  //  )
+  //  const { docs } = await getDocs(postCollectionRef)
+  //  console.log(docs.map(doc => doc.data()))
+  //}
+//
+  //async function updateCart(book) {
+  //  const cartId = cart.uid
+  //  cartRef = doc(db, "post", cartId);
+  //  const cart = await getCartById(cartId);
+  //  const newCart = {
+//
+//
+  //  }
+  //  updateDoc(cartRef, newCart);
+  //}
+//
+  //--------------------------------------------------------------------------
   
-
   function addToCart(book) {
     setCart([...cart, {...book, quantity: 1}])
   }
